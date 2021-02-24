@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Concesionario_MVC.Vehiculos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+
+
+    @using (Html.BeginForm("Index", "Vehiculos", FormMethod.Get))
+    {
+
+        <p>
+            Disponible: @Html.DropDownList("disponible", "-")
+            Marca: @Html.TextBox("searchMarca")
+            Modelo: @Html.TextBox("searchModelo")
+            @Html.DropDownList("km", "kilometros")
+            <input type="submit" value="Filter" />
+        </p>
+    }
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.marca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.numeroPuertas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.kilometros)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tipoVehiculo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.garantia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.enStock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fotografia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.modelo)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.marca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.numeroPuertas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.color)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.kilometros)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tipoVehiculo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.garantia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.enStock)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fotografia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.modelo)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID_Vehiculo }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID_Vehiculo }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID_Vehiculo })
+                </td>
+            </tr>
+        }
+
+    </table>

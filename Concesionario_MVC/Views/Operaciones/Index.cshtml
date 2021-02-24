@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Concesionario_MVC.Operacion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Clientes.NIF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empleados.NIF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vehiculos.marca)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.precio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clientes.NIF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empleados.NIF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehiculos.marca)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Operacion }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_Operacion }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Operacion })
+        </td>
+    </tr>
+}
+
+</table>

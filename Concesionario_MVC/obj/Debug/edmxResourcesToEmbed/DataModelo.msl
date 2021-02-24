@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AdventureWorksLT2017ModelStoreContainer" CdmEntityContainer="AdventureWorksLT2017Entities">
+    <EntitySetMapping Name="Clientes">
+      <EntityTypeMapping TypeName="AdventureWorksLT2017Model.Clientes">
+        <MappingFragment StoreEntitySet="Clientes">
+          <ScalarProperty Name="ID_Cliente" ColumnName="ID_Cliente" />
+          <ScalarProperty Name="NIF" ColumnName="NIF" />
+          <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleados">
+      <EntityTypeMapping TypeName="AdventureWorksLT2017Model.Empleados">
+        <MappingFragment StoreEntitySet="Empleados">
+          <ScalarProperty Name="ID_Empleado" ColumnName="ID_Empleado" />
+          <ScalarProperty Name="NIF" ColumnName="NIF" />
+          <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Operacion">
+      <EntityTypeMapping TypeName="AdventureWorksLT2017Model.Operacion">
+        <MappingFragment StoreEntitySet="Operacion">
+          <ScalarProperty Name="ID_Operacion" ColumnName="ID_Operacion" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="ID_empleado" ColumnName="ID_empleado" />
+          <ScalarProperty Name="ID_cliente" ColumnName="ID_cliente" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="ID_vehiculo" ColumnName="ID_vehiculo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehiculos">
+      <EntityTypeMapping TypeName="AdventureWorksLT2017Model.Vehiculos">
+        <MappingFragment StoreEntitySet="Vehiculos">
+          <ScalarProperty Name="ID_Vehiculo" ColumnName="ID_Vehiculo" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+          <ScalarProperty Name="numeroPuertas" ColumnName="numeroPuertas" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="kilometros" ColumnName="kilometros" />
+          <ScalarProperty Name="tipoVehiculo" ColumnName="tipoVehiculo" />
+          <ScalarProperty Name="garantia" ColumnName="garantia" />
+          <ScalarProperty Name="enStock" ColumnName="enStock" />
+          <ScalarProperty Name="fotografia" ColumnName="fotografia" />
+          <ScalarProperty Name="modelo" ColumnName="modelo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

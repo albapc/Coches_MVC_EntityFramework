@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AdventureWorksLT2017Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="ID_Cliente" />
+    </Key>
+    <Property Name="ID_Cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NIF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Operacion" Relationship="Self.FK__Operacion__ID_cl__73852659" FromRole="Clientes" ToRole="Operacion" />
+  </EntityType>
+  <EntityType Name="Empleados">
+    <Key>
+      <PropertyRef Name="ID_Empleado" />
+    </Key>
+    <Property Name="ID_Empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NIF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Operacion" Relationship="Self.FK__Operacion__ID_em__72910220" FromRole="Empleados" ToRole="Operacion" />
+  </EntityType>
+  <EntityType Name="Operacion">
+    <Key>
+      <PropertyRef Name="ID_Operacion" />
+    </Key>
+    <Property Name="ID_Operacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha" Type="DateTime" Precision="0" />
+    <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ID_empleado" Type="Int32" />
+    <Property Name="ID_cliente" Type="Int32" />
+    <Property Name="precio" Type="Double" />
+    <Property Name="ID_vehiculo" Type="Int32" />
+    <NavigationProperty Name="Clientes" Relationship="Self.FK__Operacion__ID_cl__73852659" FromRole="Operacion" ToRole="Clientes" />
+    <NavigationProperty Name="Empleados" Relationship="Self.FK__Operacion__ID_em__72910220" FromRole="Operacion" ToRole="Empleados" />
+    <NavigationProperty Name="Vehiculos" Relationship="Self.FK__Operacion__ID_ve__74794A92" FromRole="Operacion" ToRole="Vehiculos" />
+  </EntityType>
+  <EntityType Name="Vehiculos">
+    <Key>
+      <PropertyRef Name="ID_Vehiculo" />
+    </Key>
+    <Property Name="ID_Vehiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="numeroPuertas" Type="Int32" />
+    <Property Name="color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="kilometros" Type="Single" />
+    <Property Name="tipoVehiculo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="garantia" Type="Int32" />
+    <Property Name="enStock" Type="Boolean" />
+    <Property Name="fotografia" Type="Boolean" />
+    <Property Name="modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Operacion" Relationship="Self.FK__Operacion__ID_ve__74794A92" FromRole="Vehiculos" ToRole="Operacion" />
+  </EntityType>
+  <Association Name="FK__Operacion__ID_cl__73852659">
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+    <End Role="Operacion" Type="Self.Operacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="ID_Cliente" />
+      </Principal>
+      <Dependent Role="Operacion">
+        <PropertyRef Name="ID_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Operacion__ID_em__72910220">
+    <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+    <End Role="Operacion" Type="Self.Operacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleados">
+        <PropertyRef Name="ID_Empleado" />
+      </Principal>
+      <Dependent Role="Operacion">
+        <PropertyRef Name="ID_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Operacion__ID_ve__74794A92">
+    <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="0..1" />
+    <End Role="Operacion" Type="Self.Operacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehiculos">
+        <PropertyRef Name="ID_Vehiculo" />
+      </Principal>
+      <Dependent Role="Operacion">
+        <PropertyRef Name="ID_vehiculo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AdventureWorksLT2017Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Clientes" EntityType="Self.Clientes" />
+    <EntitySet Name="Empleados" EntityType="Self.Empleados" />
+    <EntitySet Name="Operacion" EntityType="Self.Operacion" />
+    <EntitySet Name="Vehiculos" EntityType="Self.Vehiculos" />
+    <AssociationSet Name="FK__Operacion__ID_cl__73852659" Association="Self.FK__Operacion__ID_cl__73852659">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="Operacion" EntitySet="Operacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Operacion__ID_em__72910220" Association="Self.FK__Operacion__ID_em__72910220">
+      <End Role="Empleados" EntitySet="Empleados" />
+      <End Role="Operacion" EntitySet="Operacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Operacion__ID_ve__74794A92" Association="Self.FK__Operacion__ID_ve__74794A92">
+      <End Role="Vehiculos" EntitySet="Vehiculos" />
+      <End Role="Operacion" EntitySet="Operacion" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
