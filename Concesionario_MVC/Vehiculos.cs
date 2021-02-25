@@ -12,8 +12,12 @@ namespace Concesionario_MVC
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Runtime.Serialization;
+    using System.Xml.Serialization;
 
+    [Serializable]
     public partial class Vehiculos
+
     {
         public Vehiculos()
         {
@@ -32,6 +36,8 @@ namespace Concesionario_MVC
         public Nullable<bool> fotografia { get; set; }
         public string modelo { get; set; }
     
+        [XmlIgnore]
+        [IgnoreDataMember]
         public virtual ICollection<Operacion> Operacion { get; set; }
     }
 }
